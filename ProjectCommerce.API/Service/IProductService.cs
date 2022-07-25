@@ -7,5 +7,6 @@ namespace ProjectCommerce.API.Service
     {
         public List<Product> GetAll();
         public Product Get(int Id);
+        void Delete(int Id);
     }
 }

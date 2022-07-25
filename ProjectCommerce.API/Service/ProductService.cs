@@ -12,8 +12,16 @@ namespace ProjectCommerce.API.Service
         {
             _context = context;
         }
+
+        public void Delete(int Id)
+        {
+            _context.Products.Remove(_context.Products.Find(Id));
+            _context.SaveChanges();
+        }
+
         public Product Get(int Id) => _context.Products.Find(Id);
 
         public List<Product> GetAll() => _context.Products.ToList();
+        
     }
 }

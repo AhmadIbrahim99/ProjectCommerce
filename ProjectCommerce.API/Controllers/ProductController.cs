@@ -10,8 +10,15 @@ namespace ProjectCommerce.API.Controllers
         {
             _service = service;
         }
-
+        [HttpGet]
         public IActionResult GetAll() => Ok(_service.GetAll());
+        [HttpGet]
         public IActionResult Get(int id) => Ok(_service.Get(id));
+        [HttpDelete]
+        public IActionResult Delete(int id) 
+        {
+            _service.Delete(id);
+            return Ok("Done"); 
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ProjectCommerce.API.Data;
+using ProjectCommerce.API.DTO;
 using ProjectCommerce.API.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,13 @@ namespace ProjectCommerce.API.Service
             _context = context;
         }
 
+        public List<Product> Create(ProductDTO productDTO)
+        {
+            _context.Products.Add(new Product() { Name = productDTO.Name, Cost = productDTO.Cost });
+            _context.SaveChanges();
+            return GetAll();
+        }
+
         public void Delete(int Id)
         {
             _context.Products.Remove(_context.Products.Find(Id));
@@ -22,6 +30,13 @@ namespace ProjectCommerce.API.Service
         public Product Get(int Id) => _context.Products.Find(Id);
 
         public List<Product> GetAll() => _context.Products.ToList();
-        
+
+        public Product Update(ProductDTO productDTO)
+        {
+            var product = new Product() { Id = productDTO.Id, Name = productDTO.Name, Cost = productDTO.Cost };
+            _context.Products.Update(product);
+            _context.SaveChanges();
+            return product;
+        }
     }
 }

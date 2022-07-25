@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectCommerce.API.DTO;
 using ProjectCommerce.API.Service;
 
 namespace ProjectCommerce.API.Controllers
@@ -20,5 +21,11 @@ namespace ProjectCommerce.API.Controllers
             _service.Delete(id);
             return Ok("Done"); 
         }
+        [HttpPost]
+        public IActionResult Create([FromBody] ProductDTO productDTO)=> Ok(_service.Create(productDTO));
+
+        [HttpPut]
+        public IActionResult Update([FromBody] ProductDTO productDTO) => Ok(_service.Update(productDTO));
+
     }
 }

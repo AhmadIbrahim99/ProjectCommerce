@@ -22,10 +22,10 @@ namespace ProjectCommerce.API.Controllers
             return Ok("Done"); 
         }
         [HttpPost]
-        public IActionResult Create([FromBody] ProductDTO productDTO)=> Ok(_service.Create(productDTO));
+        public IActionResult Create([FromBody] CreateProductDTO productDTO)=> Ok(_service.Create(productDTO));
 
         [HttpPut]
-        public IActionResult Update([FromBody] ProductDTO productDTO) => Ok(_service.Update(productDTO));
+        public IActionResult Update([FromBody] UpdateProductDTO productDTO) => Ok(_service.Update(productDTO));
 
     }
 }

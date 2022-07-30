@@ -14,7 +14,7 @@ namespace ProjectCommerce.API.Service
             _context = context;
         }
 
-        public List<Product> Create(ProductDTO productDTO)
+        public List<Product> Create(CreateProductDTO productDTO)
         {
             _context.Products.Add(new Product() { Name = productDTO.Name, Cost = productDTO.Cost });
             _context.SaveChanges();
@@ -31,7 +31,7 @@ namespace ProjectCommerce.API.Service
 
         public List<Product> GetAll() => _context.Products.ToList();
 
-        public Product Update(ProductDTO productDTO)
+        public Product Update(UpdateProductDTO productDTO)
         {
             var product = new Product() { Id = productDTO.Id, Name = productDTO.Name, Cost = productDTO.Cost };
             _context.Products.Update(product);

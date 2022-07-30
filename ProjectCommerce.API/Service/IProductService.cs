@@ -9,8 +9,8 @@ namespace ProjectCommerce.API.Service
         List<Product> GetAll();
         Product Get(int Id);
         void Delete(int Id);
-        List<Product> Create(ProductDTO productDTO);
-        Product Update(ProductDTO productDTO);
+        List<Product> Create(CreateProductDTO productDTO);
+        Product Update(UpdateProductDTO productDTO);
 
     }
 }

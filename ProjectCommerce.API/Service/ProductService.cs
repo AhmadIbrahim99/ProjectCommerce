@@ -1,5 +1,6 @@
 ﻿using ProjectCommerce.API.Data;
 using ProjectCommerce.API.DTO;
+using ProjectCommerce.API.Excptions;
 using ProjectCommerce.API.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace ProjectCommerce.API.Service
 
         public List<Product> Create(CreateProductDTO productDTO)
         {
+            if (_context.Products.Any(p => p.Name == productDTO.Name))
+                throw new DuplicateNameException();
+
             _context.Products.Add(new Product() { Name = productDTO.Name, Cost = productDTO.Cost });
             _context.SaveChanges();
             return GetAll();
